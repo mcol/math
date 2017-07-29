@@ -1,12 +1,13 @@
 #ifndef STAN_MATH_PRIM_SCAL_PROB_INV_CHI_SQUARE_RNG_HPP
 #define STAN_MATH_PRIM_SCAL_PROB_INV_CHI_SQUARE_RNG_HPP
 
+#include <stan/math/prim/scal/err/check_positive_finite.hpp>
+#include <stan/math/prim/scal/meta/max_size.hpp>
+#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
+#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
 #include <boost/random/chi_squared_distribution.hpp>
 #include <boost/random/variate_generator.hpp>
-#include <stan/math/prim/scal/err/check_positive_finite.hpp>
-#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
-#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
-#include <stan/math/prim/scal/meta/max_size.hpp>
+#include <string>
 
 namespace stan {
   namespace math {
@@ -30,7 +31,7 @@ namespace stan {
       using boost::variate_generator;
       using boost::random::chi_squared_distribution;
 
-      static const char* function("inv_chi_square_rng");
+      static const std::string function = "inv_chi_square_rng";
 
       scalar_seq_view<T_deg> nu_vec(nu);
       check_positive_finite(function, "Degrees of freedom parameter", nu);

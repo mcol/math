@@ -5,9 +5,15 @@
 #include <boost/random/variate_generator.hpp>
 #include <stan/math/prim/scal/err/check_consistent_sizes.hpp>
 #include <stan/math/prim/scal/err/check_positive_finite.hpp>
-#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
-#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
+#include <stan/math/prim/scal/fun/constants.hpp>
+#include <stan/math/prim/scal/fun/multiply_log.hpp>
+#include <stan/math/prim/scal/fun/value_of.hpp>
+#include <stan/math/prim/scal/meta/include_summand.hpp>
+#include <stan/math/prim/scal/meta/length.hpp>
 #include <stan/math/prim/scal/meta/max_size.hpp>
+#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
+#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
+#include <string>
 
 namespace stan {
   namespace math {
@@ -36,7 +42,7 @@ namespace stan {
       using boost::variate_generator;
       using boost::random::weibull_distribution;
 
-      static const char* function("weibull_rng");
+      static const std::string function = "weibull_rng";
 
       scalar_seq_view<T_shape> alpha_vec(alpha);
       scalar_seq_view<T_scale> sigma_vec(sigma);

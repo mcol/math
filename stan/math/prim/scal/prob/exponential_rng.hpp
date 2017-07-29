@@ -1,12 +1,13 @@
 #ifndef STAN_MATH_PRIM_SCAL_PROB_EXPONENTIAL_RNG_HPP
 #define STAN_MATH_PRIM_SCAL_PROB_EXPONENTIAL_RNG_HPP
 
+#include <stan/math/prim/scal/err/check_positive_finite.hpp>
+#include <stan/math/prim/scal/meta/max_size.hpp>
+#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
+#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
 #include <boost/random/exponential_distribution.hpp>
 #include <boost/random/variate_generator.hpp>
-#include <stan/math/prim/scal/err/check_positive_finite.hpp>
-#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
-#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
-#include <stan/math/prim/scal/meta/max_size.hpp>
+#include <string>
 
 namespace stan {
   namespace math {
@@ -30,7 +31,7 @@ namespace stan {
       using boost::variate_generator;
       using boost::exponential_distribution;
 
-      static const char* function("exponential_rng");
+      static const std::string function = "exponential_rng";
 
       scalar_seq_view<T_inv_scale> beta_vec(beta);
       check_positive_finite(function, "Inverse scale parameter", beta);

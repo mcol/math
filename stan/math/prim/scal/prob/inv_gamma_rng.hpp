@@ -5,9 +5,15 @@
 #include <boost/random/variate_generator.hpp>
 #include <stan/math/prim/scal/err/check_consistent_sizes.hpp>
 #include <stan/math/prim/scal/err/check_positive_finite.hpp>
-#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
-#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
+#include <stan/math/prim/scal/fun/grad_reg_inc_gamma.hpp>
+#include <stan/math/prim/scal/meta/include_summand.hpp>
 #include <stan/math/prim/scal/meta/max_size.hpp>
+#include <stan/math/prim/scal/meta/return_type.hpp>
+#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
+#include <stan/math/prim/scal/meta/VectorBuilder.hpp>
+#include <boost/random/gamma_distribution.hpp>
+#include <boost/random/variate_generator.hpp>
+#include <string>
 
 namespace stan {
   namespace math {
@@ -36,7 +42,7 @@ namespace stan {
       using boost::variate_generator;
       using boost::random::gamma_distribution;
 
-      static const char* function("inv_gamma_rng");
+      static const std::string function = "inv_gamma_rng";
 
       scalar_seq_view<T_shape> alpha_vec(alpha);
       scalar_seq_view<T_scale> beta_vec(beta);

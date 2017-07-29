@@ -1,14 +1,19 @@
 #ifndef STAN_MATH_PRIM_SCAL_PROB_GUMBEL_RNG_HPP
 #define STAN_MATH_PRIM_SCAL_PROB_GUMBEL_RNG_HPP
 
-#include <boost/random/uniform_01.hpp>
-#include <boost/random/variate_generator.hpp>
 #include <stan/math/prim/scal/err/check_consistent_sizes.hpp>
 #include <stan/math/prim/scal/err/check_positive_finite.hpp>
 #include <stan/math/prim/scal/err/check_finite.hpp>
-#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
+#include <stan/math/prim/scal/fun/constants.hpp>
+#include <stan/math/prim/scal/fun/value_of.hpp>
+#include <stan/math/prim/scal/meta/include_summand.hpp>
 #include <stan/math/prim/scal/meta/max_size.hpp>
+#include <stan/math/prim/scal/meta/return_type.hpp>
+#include <stan/math/prim/scal/meta/scalar_seq_view.hpp>
 #include <stan/math/prim/scal/meta/VectorBuilder.hpp>
+#include <boost/random/uniform_01.hpp>
+#include <boost/random/variate_generator.hpp>
+#include <string>
 
 namespace stan {
   namespace math {
@@ -37,7 +42,7 @@ namespace stan {
       using boost::variate_generator;
       using boost::uniform_01;
 
-      static const char* function("gumbel_rng");
+      static const std::string function = "gumbel_rng";
 
       scalar_seq_view<T_loc> mu_vec(mu);
       scalar_seq_view<T_scale> beta_vec(beta);

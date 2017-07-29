@@ -1,14 +1,20 @@
 #ifndef STAN_MATH_PRIM_SCAL_PROB_EXP_MOD_NORMAL_RNG_HPP
 #define STAN_MATH_PRIM_SCAL_PROB_EXP_MOD_NORMAL_RNG_HPP
 
-#include <boost/random/variate_generator.hpp>
 #include <stan/math/prim/scal/prob/normal_rng.hpp>
 #include <stan/math/prim/scal/prob/exponential_rng.hpp>
 #include <stan/math/prim/scal/err/check_consistent_sizes.hpp>
 #include <stan/math/prim/scal/err/check_finite.hpp>
 #include <stan/math/prim/scal/err/check_positive_finite.hpp>
+#include <stan/math/prim/scal/fun/value_of.hpp>
+#include <stan/math/prim/scal/meta/include_summand.hpp>
 #include <stan/math/prim/scal/meta/max_size.hpp>
 #include <stan/math/prim/scal/meta/VectorBuilder.hpp>
+#include <stan/math/prim/scal/prob/normal_rng.hpp>
+#include <stan/math/prim/scal/prob/exponential_rng.hpp>
+#include <boost/random/normal_distribution.hpp>
+#include <boost/random/variate_generator.hpp>
+#include <string>
 
 namespace stan {
   namespace math {
@@ -40,7 +46,7 @@ namespace stan {
                        const T_scale& sigma,
                        const T_inv_scale& lambda,
                        RNG& rng) {
-      static const char* function("exp_mod_normal_rng");
+      static const std::string function = "exp_mod_normal_rng";
 
       scalar_seq_view<T_loc> mu_vec(mu);
       scalar_seq_view<T_scale> sigma_vec(sigma);
@@ -69,4 +75,3 @@ namespace stan {
   }
 }
 #endif
-
