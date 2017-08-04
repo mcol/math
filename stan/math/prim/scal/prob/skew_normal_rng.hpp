@@ -41,11 +41,6 @@ namespace stan {
                     const T_shape& alpha,
                     RNG& rng) {
       static const std::string function = "skew_normal_rng";
-      boost::math::skew_normal_distribution<> dist(mu, sigma, alpha);
-
-      scalar_seq_view<T_loc> mu_vec(mu);
-      scalar_seq_view<T_scale> sigma_vec(sigma);
-      scalar_seq_view<T_shape> alpha_vec(alpha);
 
       check_finite(function, "Location parameter", mu);
       check_finite(function, "Shape parameter", alpha);
@@ -54,6 +49,12 @@ namespace stan {
                              "Location parameter", mu,
                              "Scale Parameter", sigma,
                              "Shape Parameter", alpha);
+
+      boost::math::skew_normal_distribution<> dist(mu, sigma, alpha);
+
+      scalar_seq_view<T_loc> mu_vec(mu);
+      scalar_seq_view<T_scale> sigma_vec(sigma);
+      scalar_seq_view<T_shape> alpha_vec(alpha);
 
       size_t N = max_size(mu, sigma, alpha);
 
