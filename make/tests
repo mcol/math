@@ -16,6 +16,12 @@ test/%$(EXE) : test/%.o $(GTEST_MAIN) $(GTEST)/src/gtest-all.o
 	$(LINK.cpp) -o $@ $^
 
 
+##
+# Rule for building a test.
+##
+test/%.o : test/%.cpp
+	@mkdir -p $(dir $@)
+	$(COMPILE.cc) -O$O $(GTEST_CXXFLAGS) $< $(OUTPUT_OPTION)
 
 
 ##

@@ -5,7 +5,7 @@
 help:
 
 ## Disable implicit rules.
-SUFIXES:
+.SUFFIXES:
 
 include make/default_compiler_options
 
